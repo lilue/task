@@ -15,28 +15,16 @@ try:
     # 另一种方式为每天固定时间执行任务，对应代码为：
     # @register_job(scheduler, 'cron', hour='9', minute='30', second='10',id='task_time')
 
-    @register_job(scheduler, 'cron', hour='11', minute='30', second='10', id='task_time')
+    @register_job(scheduler, 'cron', hour='10', minute='30', second='10', id='task_time', replace_existing=True)
     def task_time():
-        print("现在是11点30分10秒")
-
-
-    @register_job(scheduler, 'cron', minute='1', id='task_time1')
-    def task_time1():
-        print("每分钟执行一次")
+        print("现在是10点30分10秒")
 
     @register_job(scheduler, "interval", minutes=1, seconds=10, replace_existing=True)
     def my_job():
-        teacher = Teacher.objects.all()
-        for item in teacher:
-            print(item.name)
         print(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
 
     # 4.注册定时任务
     # register_events(scheduler)          # 新版本已经不需要这一步了
-
-    @register_job(scheduler, "interval", seconds=30, replace_existing=True)
-    def my_job2():
-        print('运行第二个方法')
 
     # 5.开启定时任务
     scheduler.start()
