@@ -15,4 +15,4 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'task.settings')
 
 application = get_wsgi_application()
 
-# from job.job import my_job, task_time
+from job.job import my_job, task_time
