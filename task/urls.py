@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
 from school.views import StudentViewSet, TeacherViewSet
-from job.job import scheduler
+# from job.job import scheduler
 
 router = routers.DefaultRouter()
 router.register('student', StudentViewSet, basename='student')
